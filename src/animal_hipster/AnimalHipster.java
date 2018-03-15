@@ -11,10 +11,22 @@ public class AnimalHipster {
 		ArrayList<String> list = new ArrayList<String>();
 
 		for (String s : network.keySet()) {
-
+			
+			boolean hipster = true;
+			ArrayList<String> friendos = network.get(s);
+			String favAnimal = favoriteAnimals.get(s);
+			
+			for (int i = 0; i < friendos.size(); i++) {
+				String friendo = friendos.get(i);
+				if (favAnimal == favoriteAnimals.get(friendo)) {
+					hipster = false;
+				}
+			}
+			if (hipster) {
+				list.add(s);
+			}
 		}
-
-		return null;
+		return list;
 	}
 
 }
